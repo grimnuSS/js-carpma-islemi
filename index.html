@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="form">
+        <!-- Kullanıcı verisi almak için input oluşturuldu,
+             En fazla veri girişi 3 basamaklı olacak şekilde maxLength eklendi. -->
+        <input type="text" id="sayi1" placeholder="1.Sayıyı Giriniz" oninput="basamakEngel_1()">
+        <input type="text" id="sayi2" placeholder="2.Sayiyi Giriniz" oninput="basamakEngel_2()">
+
+        <!-- Butona tıklandığında carp() foknsiyonuna,
+             iletilmesi sağlandı. -->
+        <button onclick="carp()">Çarp</button> 
+
+    </div>
+    <script>
+        // Çarpma işlemi için fonksiyon oluşturuldu.
+        function carp(){
+            // Sayi değişkeni tanımlandı ve inputlardan çekilerek çarpma işlemi yapıldı. Ardından sonuucu konsola yazdırıldı.
+            let sayi = document.getElementById("sayi1").value * document.getElementById("sayi2").value;
+            console.log(sayi);
+        }
+        
+        // 3 basamaktan sonrasını engellemek için 2 script yazıldı.
+        function basamakEngel_1(){
+            // HTML Sayi1 elementin seçildi
+            let input = document.querySelector('#sayi1');
+
+            // input alanının değerini dinleyin
+            input.addEventListener('input', function() {
+            // input alanındaki değer alındı.
+            let value = input.value;
+            
+            // Değerin uzunluğu kontrol edildi.
+            if (value.length > 3) {
+                // 3'ten fazla karakter varsa, ilk 3 karakteri alıp ve input alanına yazdıracak kısım oluşturuldu.
+                input.value = value.slice(0, 3);
+            }
+            });
+        }
+
+        function basamakEngel_2(){
+            // HTML Sayi2 elementin seçildi
+            let input = document.querySelector('#sayi2');
+
+            // input alanının değerini dinleyin
+            input.addEventListener('input', function() {
+            // input alanındaki değer alındı.
+            let value = input.value;
+            
+            // Değerin uzunluğu kontrol edildi.
+            if (value.length > 3) {
+                // 3'ten fazla karakter varsa, ilk 3 karakteri alıp ve input alanına yazdıracak kısım oluşturuldu.
+                input.value = value.slice(0, 3);
+            }
+            });
+        }
+    </script>
+</body>
+</html>
